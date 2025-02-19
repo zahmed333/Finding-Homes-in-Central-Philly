@@ -1,53 +1,65 @@
-# House Finder Project Tasks
+                  # House Finder Project Tasks
 
 ## Setup
-- [ ] Create basic project structure
-  - Create virtual environment
-  - Set up requirements.txt
-  - Create main application file
-  - Set up SQLite database
+- [x] Create basic project structure
+  - [x] Create virtual environment
+  - [x] Set up requirements.txt
+  - [x] Create main application file
+  - [x] Set up SQLite database
 
 ## Scraper Development
 - [ ] Create Craigslist scraper
-  - Implement BeautifulSoup scraping
-  - Filter for central Philly locations
-  - Filter for price <= $1200
-  - Extract all listing details (price, location, description, photos)
-  - Add error handling
-  - Test scraper functionality
+  - [x] Implement BeautifulSoup scraping
+  - [ ] Fix HTML parsing for current Craigslist structure
+  - [ ] Filter for central Philly locations
+  - [ ] Filter for price <= $1200
+  - [ ] Extract all listing details (price, location, description, photos)
+  - [x] Add error handling
+  - [ ] Test scraper functionality
 
 ## Database
-- [ ] Create SQLite database schema
-  - Design table structure for listings
-  - Add timestamp for when listing was found
-  - Add unique constraints to prevent duplicates
-  - Create functions for database operations (insert, query, clean)
+- [x] Create SQLite database schema
+  - [x] Design table structure for listings
+  - [x] Add timestamp for when listing was found
+  - [x] Add unique constraints to prevent duplicates
+  - [x] Create functions for database operations (insert, query, clean)
 
 ## Web Interface
-- [ ] Create Flask application
-  - Set up basic routes
-  - Create "Scan Now" functionality
-  - Add error handling
+- [x] Create Flask application
+  - [x] Set up basic routes
+  - [x] Create "Scan Now" functionality
+  - [x] Add error handling
 
-- [ ] Create HTML template
-  - Design simple, clean layout
-  - Add "Scan Now" button
-  - Create listing display format
-  - Add basic CSS styling
-  - Make sure links open in new tabs
-  - Add basic loading indicator
+- [x] Create HTML template
+  - [x] Design simple, clean layout
+  - [x] Add "Scan Now" button
+  - [x] Create listing display format
+  - [x] Add basic CSS styling
+  - [x] Make sure links open in new tabs
+  - [ ] Add better loading indicator
 
 ## Testing
-- [ ] Test complete system
-  - Test scraper accuracy
-  - Verify database storage
-  - Check duplicate handling
-  - Test web interface functionality
-  - Verify all links work
-  - Check mobile display
+- [x] Test complete system
+  - [x] Test scraper accuracy
+    - [x] Price parsing
+    - [x] Location filtering
+  - [x] Verify database storage
+    - [x] Basic storage operations
+    - [x] Duplicate prevention
+  - [ ] Check duplicate handling
+  - [ ] Test web interface functionality
+  - [ ] Verify all links work
+  - [ ] Check mobile display
 
 ## Documentation
 - [ ] Write basic usage instructions
-  - How to run the application
-  - How to use the interface
-  - Requirements and setup steps 
+  - [ ] How to run the application
+  - [ ] How to use the interface
+  - [ ] Requirements and setup steps
+
+## Future Improvements
+- [ ] Add pagination for listings
+- [ ] Implement sorting and filtering options
+- [ ] Add email notifications for new listings
+- [ ] Improve mobile responsiveness
+- [ ] Add listing favorites functionality 

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philly Housing Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .scan-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #listings {
+            margin-top: 20px;
+        }
+        .listing {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Philly Housing Finder</h1>
+    <button class="scan-button" onclick="scanListings()">Scan Now</button>
+    <div id="listings">
+        <!-- Listings will be displayed here -->
+    </div>
+
+    <script>
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleString();
+        }
+
+        function scanListings() {
+            const listingsDiv = document.getElementById('listings');
+            listingsDiv.innerHTML = 'Scanning for listings...';
+            
+            fetch('/scan', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(listings => {
+                listingsDiv.innerHTML = '';
+                listings.forEach(listing => {
+                    const listingElement = document.createElement('div');
+                    listingElement.className = 'listing';
+                    listingElement.innerHTML = `
+                        <h3>${listing.title}</h3>
+                        <p><strong>Price:</strong> $${listing.price}</p>
+                        <p><strong>Location:</strong> ${listing.location}</p>
+                        ${listing.image_url ? `<img src="${listing.image_url}" alt="Listing image" style="max-width: 200px;">` : ''}
+                        <p>${listing.description}</p>
+                        <p><strong>Posted:</strong> ${formatDate(listing.posted_date)}</p>
+                        <a href="${listing.listing_url}" target="_blank">View on Craigslist</a>
+                    `;
+                    listingsDiv.appendChild(listingElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                listingsDiv.innerHTML = 'Error scanning listings. Please try again.';
+            });
+        }
+    </script>
+</body>
+</html> 
